@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src='../day03/libs/angular.min.js'></script>
+  <style>
+    table,tr,td{
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body ng-app='app'>
+  <div ng-controller="ctrl">
+    <input type="text" ng-model="a"><br>
+    <div>
+      <button ng-click="send()">点击发送</button>
+    </div>
+    <div>
+      <table cellpadding="0" cellspacing="0">
+        <tr>
+          <td>学号</td>
+          <td>姓名</td>
+          <td>性别</td>
+        </tr>
+        <tr ng-repeat="student in students">
+          <td>{{student.id}}</td>
+          <td>{{student.name}}</td>
+          <td>{{student.sex=='M'?'男':'女'}}</td>
+        </tr>
+      </table>
+      <div ng-controller="ctrl">
+          {{result}}
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.controller("ctrl",function($scope,$http){
+    $scope.send=function(){
+      $http({
+        url:"stu.php"
+      }).success(function(result){
+        $scope.students=[];
+        if($scope.a=='M'){
+          $scope.students.push(result[0]);
+          $scope.students.push(result[1]);
+          $scope.students.push(result[5]);
+        }else if($scope.a=='F'){
+          $scope.students.push(result[2]);
+          $scope.students.push(result[3]);
+          $scope.students.push(result[4]);
+        }else{
+          $scope.result="参数错误";
+        }
+      });
+    }
+  });
+</script>
+</html>

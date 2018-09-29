@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="libs/angular.min.js"></script>
+</head>
+<body ng-app="app">
+  <div ng-controller="ctrl">
+    {{name}}<br>
+    {{age}}<br>
+    {{arr}}<br>
+    {{obj}}<br>
+    <div>
+      姓名:{{info.name}},年龄:{{info.age}}
+    </div>
+    {{arr[0]}}<br>
+    {{info.name}}
+  </div>
+</body>
+<script>
+  var app = angular.module("app", []);
+  app.controller("ctrl", ["$scope", function ($scope) {
+    $scope.name = "韩梅梅";
+    $scope.age = 20;
+    $scope.arr = [1, 2, 3];
+    $scope.obj = {
+       a: 1,
+       b: 2
+     };
+     var data = {
+       name: 'joe',
+       age: 18
+     };
+     $scope.info = data;
+  }]);
+</script>
+</html>

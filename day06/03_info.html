@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src='../day03/libs/angular.min.js'></script>
+</head>
+<body ng-app='app'>
+  <div ng-controller="ctrl">
+    <input type="text">
+    <button ng-click="send()">点击</button>
+  </div>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.controller("ctrl",function($scope){
+    $scope.send=function(result){
+      $scope.students=result;
+    }
+  });
+</script>
+</html>

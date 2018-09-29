@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src='../day03/libs/angular.min.js'></script>
+  <script src="../day03/libs/angular-route.js"></script>
+</head>
+<body ng-app='app'>
+  <a href="#/show">显示所有人的基本信息</a><br>
+  <a href="#/student/zhangsan/1101">显示学生一的信息</a><br>
+  <a href="#/student/lily/1102">显示学生二的信息</a><br>
+  <a href="#/teacher/sue/001">显示教师的基本信息</a>
+  <div ng-view></div>
+</body>
+<script>
+  var app = angular.module('app', ['ngRoute']);
+  app.config(function($routeProvider){
+    $routeProvider.when("/",{
+      template: "首页"
+    }).when("/show",{
+      templateUrl:"./show.html",
+      controller:"show"
+    }).when("/:job/:name/:No",{
+      templateUrl:"./student.html",
+      controller:"student"
+    })
+  });
+  app.controller("show",function($scope,$http){
+    // 通过$http发送请求,获取数据,数据绑定后发送给视图
+    $http({
+      url:"./show.php"
+    }).success(function(result){
+      $scope.users=result;
+    });
+    $scope.a=function(order){
+      // alert(111);
+      // 按照score的值进行排序
+      if($scope.order==order){
+        $scope.order="-"+order;
+      }else{
+        $scope.order=order;
+      }
+    }
+  })
+  app.controller("student",function($scope,$routeParams){
+    var job=$routeParams.job;
+    var name=$routeParams.name;
+    var No=$routeParams.No;
+    if(job=='student'){
+      $scope.job="学生";
+      $scope.name=name;
+      $scope.type="学号";
+      $scope.No=No;
+    }else if(job=='teacher'){
+      $scope.job="老师";
+      $scope.name=name;
+      $scope.type="工号";
+      $scope.No=No;
+    }
+  });
+</script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>音乐榜</title>
+  <script src="./libs/angular.min.js"></script>
+  <script src="../day03/libs/angular-route.js"></script>
+</head>
+<body ng-app="music">
+	<div class="music">
+	<!-- 导航栏 -->
+		<nav>
+			<a href="#/1">流行</a>
+			<a href="#/2">华语</a>
+			<a href="#/3">欧美</a>
+			<a href="#/4">日韩</a>
+		</nav>
+  </div>
+  <div ng-view></div>	
+</body>
+<script>
+  // 创建模块,声明依赖关系
+  var music=angular.module("music",['ngRoute']);
+  music.controller("ctrl",function($scope,$http,$routeParams){
+    var id=$routeParams.id;
+    //console.log(id);
+    $http({
+      url:"./music/api/list.php",
+      params:{id:id}
+    }).success(function(result){
+      //$scope.music=result;
+      var music=[];
+      for(var i=0;i<result.length;i++){
+        if(id==result[i].pid){
+          music.push(result[i]);
+        }
+      }
+      $scope.music=result;
+    })
+  });
+  // 配置路由
+  music.config(function($routeProvider){
+    $routeProvider.when("/",{
+      redirectTo:"/1" //跳转到/1路由请求
+    }).when("/:id",{
+      templateUrl:"./music1.html",
+      controller:"ctrl"
+    }).otherwise({
+      redirectTo:"/1" //跳转到/1路由请求
+    })
+  });
+</script>
+</html>

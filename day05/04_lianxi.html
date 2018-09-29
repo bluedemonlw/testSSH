@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src='../day03/libs/angular.min.js'></script>
+</head>
+
+<body ng-app='app'>
+  <div ng-controller="ctrl">
+    <input type="text" ng-model="num"><br>
+    {{num|uppercase}}<br>
+    {{num|lowercase}}<br>
+    <input type="text" ng-model="nums"><br>
+    {{nums|limitTo:-5|uppercase}}<br>
+    <input type="text" ng-model="number"><br>
+    {{number|number:1}}<br>
+    {{time|date:"yyyy年MM月dd日 HH时mm分ss秒"}}<br>
+    {{obj|orderBy:"id"}}<br>
+    {{obj|orderBy:["-age","id"]}}<br>
+    {{stus|filter:{name:'a'} }}
+  </div>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.controller("ctrl",["$scope",function($scope){
+    $scope.num;
+    $scope.nums;
+    $scope.number;
+    $scope.time=new Date();
+    $scope.obj=[
+      {id:101,name:"Mike",age:22},
+      {id:103,name:"Jack",age:22},
+      {id:105,name:"Rose",age:24},
+      {id:102,name:"Allen",age:24},
+      {id:104,name:"Lily",age:22}
+    ]
+    $scope.stus=[
+      {id:101,name:'Jack',age:20},
+      {id:102,name:'Zoe',age:18},
+      {id:101,name:'Mike',age:24}
+    ]
+  }]);
+</script>
+
+</html>

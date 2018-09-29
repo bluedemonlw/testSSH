@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <style>
+    #d{
+      width: 100px;height: 100px;
+      border: 1px solid red;
+    }
+    .d1{
+      background: red;
+    }
+    #d2{
+      width: 100px;height: 100px;
+      border: 1px solid red;
+    }
+    .black{
+      background: black;
+    }
+    .blue{
+      background: blue;
+    }
+    .lightblue{
+      background: lightblue;
+    }
+  </style>
+  <script src='../day03/libs/angular.min.js'></script>
+</head>
+<body ng-app='app'>
+  <div ng-include="'head.html'"></div>
+  <ul ng-controller="ctrl">
+    <!-- ng-show可以取值为true或者1,则显示元素取值false或0,则隐藏元素 -->
+    <li ng-show="isShow">这是ng-show</li>
+    <!-- 效果与ng-show一样,但是取值相反 -->
+    <li ng-hide="false">这是ng-hide</li>
+    <li ng-if="false">这是ng-if</li>
+    <li>{{msg}}</li>
+    <li ng-bind="msg"></li>
+    <li>
+      <label><input type="radio" name="gender" value="M" ng-checked="sex=='M'">男</label>
+      <label><input type="radio" name="gender" value="F" ng-checked="sex=='F'">女</label>
+    </li>
+    <li>
+      <img ng-src="{{path}}">
+    </li>
+    <!-- <li ng-repeat="(key,stu) in stus"> -->
+    <!-- track by $index 当数组中有重复元素时,ng-repeat会出错,添加该语句可避免出错 -->
+    <li ng-repeat="stu in stus track by $index">
+      {{$index}}:{{stu}}
+    </li>
+    <li>
+      <div ng-class="{d1:color=='red'}" id="d"></div>
+      <div id="d2" ng-class="{black:color==1,blue:color==2}"></div>
+    </li>
+    <li>
+      <select ng-model="val">
+        <option value="1">html</option>
+        <option value="2">css</option>
+        <option value="3">js</option>
+      </select>
+    </li>
+    <li>
+      <ul ng-switch="val">
+        <li ng-switch-when="1">html的内容</li>
+        <li ng-switch-when="2">css的内容</li>
+        <li ng-switch-when="3">js的内容</li>
+      </ul>
+    </li>
+    <div>
+      <input type="checkbox" value="read">读书
+      <input type="checkbox" ng-checked="hobby=='learn'" value="learn">学习
+      <input type="checkbox" value="sing">唱歌
+    </div>
+    <div>
+      <img ng-src="{{newpath}}">
+    </div>
+    <div>
+      <select ng-model="value2">
+        <option value="1">html</option>
+        <option value="2">css</option>
+        <option value="3">js</option>
+      </select>
+    </div>
+    <div>
+      <ul ng-switch="value2">
+        <li ng-switch-when="1">HTML初级</li>
+        <li ng-switch-when="1">HTML中级</li>
+        <li ng-switch-when="1">HTML高级</li>
+        <li ng-switch-when="2">css初级</li>
+        <li ng-switch-when="2">css中级</li>
+        <li ng-switch-when="2">css高级</li>
+        <li ng-switch-when="3">js初级</li>
+        <li ng-switch-when="3">js中级</li>
+        <li ng-switch-when="3">js高级</li>
+      </ul>
+    </div>
+    {{num}}<br>
+    {{str}}<br>
+    {{obj}}<br>
+    {{arr}}
+    <div ng-repeat="arr2 in arr track by $index" ng-class="{lightblue:bgcolor==1}">
+      {{$index}}:{{arr2}}
+    </div>
+  </ul>
+</body>
+<script>
+  var app = angular.module('app',[]);
+  app.controller("ctrl",["$scope",function($scope){
+    $scope.isShow=false;
+    $scope.msg="模型层绑定的数据";
+    $scope.sex="M";
+    $scope.path="../day03/title.ico";
+    $scope.stus=['Jack','Mike','Lily','Lily','Rose'];
+    $scope.color=2;
+    $scope.hobby="learn";
+    $scope.newpath="../day04/9.ico";
+    $scope.num=1;
+    $scope.str="张三";
+    $scope.obj={a:1};
+    $scope.arr=[1,2,3];
+    $scope.bgcolor=1;
+  }]);
+</script>
+</html>
