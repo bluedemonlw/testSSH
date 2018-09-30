@@ -6,3 +6,31 @@
   ejs,jade:后台模板
   下载ejs
     02_ejs.js
+    02_ejs_2.js//模拟可填充的数据类型
+    02_ejs_3.js//模拟从浏览器访问,服务器填充数据
+3.Express框架
+  基于nodejs平台,快速开放极简的web开发框架
+  原生nodejs开发中有如下3个问题:
+    1.呈现静态页面不方便,需要处理每一个http请求
+    2.路由处理代码不直观
+    3.不能集中精力写业务,需要考虑很多其他的东西
+  express的三个常用方法:
+    1.静态文件伺服能力
+    2.路由功能
+    3.模板功能
+  1)模板功能
+    03_express.js
+    express模板功能,需要设置视图模板引擎
+    因为nodejs默认的模板是jade
+    app.set("view engine","ejs");
+    视图模板文件存放在固定文件夹中views
+    视图模板文件是ejs后缀名
+    练习:
+      使用express创建服务,
+      模拟数据data={stus:['Jack','rose','mike','jerry']}
+      编写ejs视图模板
+      访问/显示这是首页
+      访问/info以列表形式显示每个人的姓名
+作业:
+  1.重做formidable上传图片
+  2.使用express重做formidable
