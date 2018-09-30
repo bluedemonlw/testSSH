@@ -1,5 +1,6 @@
 var http = require('http');
 var fs=require("fs");
+var qs=require("querystring");
 var server = http.createServer(function (req, res) {
   if (req.url == '/favicon.ico') {
     return;
@@ -10,9 +11,8 @@ var server = http.createServer(function (req, res) {
         console.log(err);
         res.end("加载页面失败");
         return;
-      }else{
-        res.end(data);
       }
+      res.end(data);
     })
   }
   if(req.url=="/tijiao"&&req.method.toLowerCase()=="post"){
@@ -25,13 +25,15 @@ var server = http.createServer(function (req, res) {
     req.addListener('data',function(chunk){
       // 拼接每次接收到的数据
       allData+=chunk;
-    });
+    })
     // end:接收完成的状态,当数据全部接收完毕,进入该状态
     req.addListener('end',function(){
       // 进入接收完成状态,说明数据已经接收成功
       console.log(allData);
+      var obj=qs.parse(allData);
+      console.log(obj);
       res.end();//返回响应
-    });
+    })
   }
 });
 server.listen(4000, 'localhost');
