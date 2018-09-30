@@ -1,1 +1,8 @@
 1.使用关于formidable模块处理请求
+2.模板引擎
+  template:前端模板
+  <% for语句/if语句/while语句 %>
+  <%= 变量名 %>
+  ejs,jade:后台模板
+  下载ejs
+    02_ejs.js
