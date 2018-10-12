@@ -15,9 +15,12 @@
   </form>
   <ul>
     <% for(var i=0;i<docs.length;i++){ %>
-      <li>用户名:<%= docs[i].name %></li>
-      <li>留言内容:<%= docs[i].message %></li>
-      <li>留言时间:<%= docs[i].time %></li>
+      <li>
+        <div>用户名:<%= docs[i].name %></div>
+        <div>留言内容:<%= docs[i].message %></div>
+        <div>留言时间:<%= docs[i].time %></div>
+        <div>删除 修改</div>
+      </li>
     <% } %>
   </ul>
 </body>
