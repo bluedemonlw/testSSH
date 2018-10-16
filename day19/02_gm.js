@@ -6,7 +6,7 @@ gm('./e.jpg')
 // .blur(7,3)//模糊效果
 // .crop(300,300,150,130)//剪切图片
 // .edge(3)
-.drawCircle(100,100,90,90)//圆心坐标x,y,偏离图片原点距离x,y
+// .drawCircle(100,100,90,90)//圆心坐标x,y,偏离图片原点距离x,y
 .write('./2.jpg',function(err){
   if(!err)
     console.log('crazytom has arrived');
