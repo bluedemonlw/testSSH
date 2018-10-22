@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <h2>form表单提交get请求</h2>
+  <form>
+    用户名:<input type="text" id="user"/><br>
+    密码:<input type="password" id="pwd"/><br>
+    <input type="button" id="btn" value="提交表单"/>
+  </form>
+</body>
+<script>
+//请求01.php的内容
+/*btn.onclick=function(){
+  var xhr=new XMLHttpRequest();
+  xhr.open('get','01.php?name='+user.value+'&pwd='+pwd.value);
+  xhr.send(null);
+  xhr.onreadystatechange=function(){
+    if(xhr.readyState==4&&xhr.status==200){
+      console.log(xhr.responseText);
+    }
+  }
+}*/
+//把get改成post
+btn.onclick=function(){
+  var xhr=new XMLHttpRequest();
+  xhr.open('post','01.php');
+  xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+  xhr.send('name='+user.value+'&pwd='+pwd.value);
+  xhr.onreadystatechange=function(){
+    if(xhr.readyState==4&&xhr.status==200){
+      console.log(xhr.responseText);
+    }
+  }
+}
+</script>
+</html>

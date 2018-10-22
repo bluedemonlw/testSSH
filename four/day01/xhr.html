@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* Ajax的原生写法 */
+    // 创建xhr
+    var xhr=new XMLHttpRequest();
+    // 建立连接
+    // 如果请求方式为get,data是直接写在url?后面,不是在send里面
+    xhr.open('get','xx.php?name=xiaoming&age=20',/*true*/);
+    // 发送请求
+    // data数据格式:键值对key1=value1&key2=value2
+    xhr.send();
+    // 请求方式是post
+    xhr.open('post','xx.php');
+    // 在发送数据之前要设置请求头
+    xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+    xhr.send('name=xiaoming&age=20');
+    // 监听请求
+    xhr.onreadystatechange=function(){
+      if(xhr.readyState===4&&xhr.status===200){
+        // 处理数据并响应数据
+        console.log(xhr.responseText);
+      }
+    }
+  </script>
+</body>
+</html>

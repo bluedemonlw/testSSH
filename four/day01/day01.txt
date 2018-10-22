@@ -1,0 +1,98 @@
+JS高级  - ECMAScript + DOM + BOM
+回顾内容:
+  1.基本数据类型
+    number string boolean null undefined
+  2.引用类型
+    Array Object
+  3.内置对象
+    Number String Boolean Array Object Function Math RegExp
+    Date Global Error
+  面向对象:
+    继承:prototype
+    1)定义一个构造函数
+        function Student(sname){
+          this.sname=sname;
+          ...
+          Student.prototype.getName=f(){
+            console.log(this.sname);
+          }
+        }
+    2)公共方法定义在原型上
+    3)new 构造函数
+      var xm=new Student('小茗');
+      new要做:
+      1.实例化一个空对象
+      2.构造函数的prototype属性指向原型对象,this指向对象名xm
+      3.xm对象的_proto_属性指向原型对象
+      4.执行构造函数内部代码
+与服务器通信
+1、HTTP协议
+2、Ajax
+Ajax的基本概念
+1.AsynChronous JavaScript And Xml
+  异步的js和xml:不刷新浏览器的情况下,浏览器异步的,悄悄的向服务器发送HTTP请求,服务器接收请求并响应数据,浏览器解析数据,页面实现局部刷新
+2.Ajax:不是一门新的编程语言,只是一系列web技术的集合
+  优点:用户体验好、异步通信、响应数据更快
+  缺点:存在安全问题、破坏了浏览器的后退机制
+3.原生的使用方法
+  创建5步:
+  1.创建XMLHttpRequest(Ajax的核心对象)对象
+    属于BOM对象
+    var xhr=new XMLHttpRequest();
+  2.建立连接
+    xhr.open(method,url,async)
+    method:请求方式get/post
+    url:请求地址
+    async:是否发送异步请求
+  3.发送请求
+    xhr.send(data)
+  4.监听请求-监听通信状态改变事件
+    xhr.onreadystatechange=function(){
+      //事件处理函数/事件回调函数
+      if(xhr.readyState===4&&xhr.status===200){
+        //拿到响应数据
+        5.处理数据
+          xhr.responseText:拿到响应数据
+      }
+      两个属性:readyState(通信状态,5个值:0-4) status(状态码)
+      0:请求未建立,还没调用open()
+      1:请求已经建立,调用了open(),但没发送,没执行send()
+      2:请求已经发送,正在处理中
+      3:请求还在处理中,响应头部有部分数据可用
+      4:响应数据已经完成,可以获取数据
+      状态码:
+        200:OK
+        404:未找到页面
+    }
+.Ajax请求的数据类型
+字符串|XML|JSON(主要的数据类型)
+JSON是JS的一个子集,是一种基于文本的数据交换格式后缀.json
+特点:
+  1.易于程序员编写与阅读
+  2.json是目前网络上使用最广泛的数据格式,已经替代了XML
+  3.易于计算机的解析和生成
+支持的数据类型:
+  Number String Array Object null
+创建json文件
+1.数组
+  ["张无忌","周芷若","殷离"]
+2.对象
+  {
+  "name1":"za",
+  "name2":"aa",
+  "name3":"li"
+}
+3.数组和对象结合-1
+[
+  {"歌手":"周华健","演员":"刘德华"},
+  {"歌手":"周杰伦","演员":"章子怡"}
+]
+4.数组和对象结合-2
+{
+  "歌手":["林俊杰","谢霆锋","张柏芝"],
+  "演员":["黄渤","周星驰","陈伟霆"]
+}
+JSON的API(JS)
+  1.JSON.parse():将json字符串转化为js对象
+  2.JSON.stringify():将js对象转化为json字符串
+在客户端构建json格式的字符串
