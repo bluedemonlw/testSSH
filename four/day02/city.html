@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul {
+      list-style: none;
+    }
+
+    select,
+    ul {
+      float: left;
+    }
+  </style>
+  <script src="./xhr_tools.js"></script>
+</head>
+
+<body>
+  <select id="prov">
+    <option>-请选择-</option>
+    <option>江苏省</option>
+    <option>四川省</option>
+    <option>安徽省</option>
+  </select>
+  <ul id="city"></ul>
+</body>
+<script>
+  //Ajax请求cities.json数据,取到数据,通过前台下拉列表里的省份选择显示对应的城市
+  prov.onchange = function () {
+    city.innerHTML = "";
+    // console.log(JSON.parse(xhr.responseText));
+    if (this.value.slice(1, -1) == '请选择') {
+      return;
+    }
+    /*var xhr=new XMLHttpRequest();
+    xhr.open('get','cities.json');
+    xhr.send();
+    xhr.onreadystatechange=function(){
+      if(xhr.readyState==4&&xhr.status==200){*/
+    xhr({
+      url:'01.php', 
+      methods:'post', 
+      data:'', 
+      success:function (data) {
+      var data2 = JSON.parse(data);
+      // console.log(data);
+      for (var k in data2) {
+        if (prov.value == k) {
+          for (var i = 0; i < data2[k].length; i++) {
+            var li = document.createElement('li');
+            li.innerHTML = data2[k][i];
+            city.appendChild(li);
+          }
+        }
+      }
+    }})
+  }
+</script>
+
+</html>
