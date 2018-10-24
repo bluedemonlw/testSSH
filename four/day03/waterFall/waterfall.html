@@ -103,7 +103,14 @@
           var n=[];
           for(var i=0;i<10;i++){
             var a=ran();
-            n.push(data[a]);
+            if(n.indexOf(a,25)==-1){
+              n.push(data[a]);
+              data[a]=data[i+1];
+            }else{
+              data[i]=n;
+              n=data[a];
+              data[i]=data[a];
+            }
           }
           var obj={
             key:n
