@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./temp/template-native.js"></script>
+</head>
+<body>
+  <!-- 在script标签中定义模板 -->
+  <script id="temp1" type="text/html">
+    <ul>
+      <li><%= name %></li>
+      <li><%= skill %></li>
+      <li>friend
+        <ul>
+          <% for(var i=0;i<friend.length;i++) {%>
+            <li><%= friend[i] %></li>
+          <% } %>
+        </ul>
+      </li>
+      <li>son
+        <ul>
+          <% for(var j=0;j<son.length;j++){ %>
+            <li>名字:<%= son[j].name %></li>
+            <li>老婆:<%= son[j].wife %></li>
+            <li>年龄:<%= son[j].age %></li>
+          <% } %>
+        </ul>
+      </li>
+    </ul>
+  </script>
+  <script>
+    // 定义数据
+    var obj={
+      name:'孙悟空',
+      skill:'七十二变',
+      friend:['小林','龟仙人','超级赛亚人','布尔玛'],
+      son:[{
+        name:'孙悟饭',
+        wife:'比里迪',
+        age:20
+      },{
+        name:'孙悟天',
+        wife:'无',
+        age:12
+      }]
+    };
+    // 调用模板引擎方法
+    var data=template('temp1',obj);
+    document.body.innerHTML=data;
+  </script>
+</body>
+</html>
