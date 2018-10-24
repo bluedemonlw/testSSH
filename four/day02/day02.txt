@@ -48,3 +48,9 @@ jQuery给我们提供了3个常用的方法
 jsonp的缺点:
   1)无法发送post请求
   2)确定jsonp请求是否失败不容易,大部分都是结合超时间来判断
+4.jquery中的jsonp
+  直接使用$.ajax()方法来发起jsonp请求
+  url,data,type,dataType:请求的数据类型'json'
+  如果发起jsonp请求,设置dataType为'jsonp'就可以
+  注意:通过创建XMLHttpRequest对象来json
+      通过创建script标签来发起请求
