@@ -97,12 +97,13 @@
           $('.items').waterfall();
         }*/
         success:function(data){
-          // console.log(data);
-          var ran=Math.floor(Math.random()*25);
+          function ran(){
+            return Math.floor(Math.random()*25);
+          }
           var n=[];
           for(var i=0;i<10;i++){
-            var a=ran;
-            n.push(data[i]);
+            var a=ran();
+            n.push(data[a]);
           }
           var obj={
             key:n

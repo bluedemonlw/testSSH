@@ -19,5 +19,5 @@
   }
   // 输出结果
   echo json_encode($newArr);*/
-  echo $data;
+  print_r($data);
 ?>
