@@ -63,5 +63,7 @@ CORS 跨域资源共享(Cross Origin Resource Sharing)
   3.具体实现:
     (1)通过cors发起跨域请求和普通的ajax请求是一样的,代码没有差别
     (2)在服务器端设置响应头,因此实现cors的关键是在服务器端,服务器端实现cors接口,前端可跨域请求
-jsonp与cors的本质原理区别:
-  jsonp通过创建script标签,cors通过jquery的$.ajax()方法
+jsonp与cors的区别:
+  jsonp只支持get请求,cors支持所有请求
+  jsonp通过创建script标签,cors通过jquery的$.ajax()方法,比jsonp有更好的错误处理机制
+  jsonp主要被旧浏览器支持,cors是所有现代浏览器都支持,除了IE10以下的版本
