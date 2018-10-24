@@ -54,3 +54,14 @@ jsonp的缺点:
   如果发起jsonp请求,设置dataType为'jsonp'就可以
   注意:通过创建XMLHttpRequest对象来json
       通过创建script标签来发起请求
+CORS 跨域资源共享(Cross Origin Resource Sharing)
+  1.官方给出的解决方案
+  2.cors的实现原理:
+      使用自定义的http响应头部信息
+      设置responseHeaders的字段:
+        Access-Control-Allow-Origin:*/127.0.0.1
+  3.具体实现:
+    (1)通过cors发起跨域请求和普通的ajax请求是一样的,代码没有差别
+    (2)在服务器端设置响应头,因此实现cors的关键是在服务器端,服务器端实现cors接口,前端可跨域请求
+jsonp与cors的本质原理区别:
+  jsonp通过创建script标签,cors通过jquery的$.ajax()方法
