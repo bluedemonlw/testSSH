@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 存储的目标是对象
+    var obj={
+      sname:'小茗',
+      sage:22,
+      swork:"前端开发"
+    };
+    // localStorage.setItem(key,value)
+    var data=JSON.stringify(obj);
+    localStorage.setItem('xm',data);
+    // 取数据
+    var xmData=localStorage.getItem('xm');
+    console.log(xmData);
+    // 封装一个方法,存取数据都是对象的形式
+    var mls={
+      // 获取值的方法
+      get:function(key){
+        var val= JSON.parse(localStorage.getItem(key));
+        if(!val){
+          return new Error("key不存在");
+        }
+        // 判断days有没有过期
+        if(new Date().getTime()>val.endTime){
+          val=null;
+          localStorage.removeItem(key);
+        }
+        return val.data;
+      },
+      // 设置值的方法-days:设置有效时间
+      set:function(key,value,days){
+        var item={
+          data:value
+        }
+        if(days){
+          item.endTime=new Date().getTime()+days*24*3600*1000;
+        }
+        localStorage.setItem(key,JSON.stringify(item));
+      }
+    }
+    // 使用mls
+    mls.set('xw',{
+      sname1:'小红',
+      sage1:20
+    },5);
+    console.log(mls.get('xw'));
+  </script>
+</body>
+</html>

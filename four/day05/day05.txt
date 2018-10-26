@@ -1,0 +1,70 @@
+web存储(H5) IndexDB客户端数据库
+H5给我们新增了两个本地存储的API,分别是LocalStorage,sessionStorage.
+LocalStorage特点:
+  (1)可以长期保存数据
+  (2)保存数据最大5MB
+  (3)只能在客户端使用,不和服务器端通信
+  (4)接口封装比较好
+localStorage的API:
+ 读取值:localStorage.getItem(key);
+ 设置值:localStorage.setItem(key,value);
+ 删除值:localStorage.removeItem(key,value);
+ 获取指定的key:localStorage.key(下标);
+ 删除全部:localStorage.clear();
+sessionStorage特点:
+  保存的数据用于浏览器的一次会话,数据被清除,API和LocalStorage是一样的,使用方式也一样
+  可以有效的对表单信息进行维护,比如:刷新表单,数据不丢失
+web移动端
+  H5页面/web app
+  app(react-native(react)/weex(vue))
+  页面运行在移动端设备上,叫web移动端开发
+  设备:智能手机 
+  操作系统:IOS,windowsPhone 安卓 塞班 黑莓...
+  浏览器:safari chrome uc qq 百度 搜狗 360
+  浏览器内核:webkit
+  移动端事件 touch
+    移动端有一组touch事件
+      touchstart:开始触摸
+      touchmove:滑动
+      touchend:触摸结束
+      touchCancel:被迫结束滑动
+    移动端布局flex
+    w3c官方称为css弹性盒子布局(flexbox),是在css3中定义的一个新的布局模式
+    1.flexbox可以控制在容器内的子元素的排列方式、对齐方法、排序顺序,即使
+    子元素的尺寸是未知或者是动态的情况
+    2.flexbox特点:简单灵活,几行代码就能实现页面布局
+    3.flexbox的组成:
+        是由容器(container)和容器内的直接子元素(flex item)组成
+        任何一个容器都能指定为flex布局,这样容器内部的元素就可以使用flex来进行布局
+      container(容器):
+        1)display:flex/inline-flex
+        2)flex-direction:主要决定了项在容器中的排列方式
+          row | row-reverse | column | column-reverse
+          row:子项横向从左向右排列(默认)
+          row-reverse:横向从右向左排列
+          column:以纵向且从上往下排列(默认)
+          column-reverse:以纵向且从下往上排列
+        3)flex-wrap:nowrap | wrap | wrap-reverse
+          是否让容器内的子项保持在一行
+          nowrap:容器内的子项保持在一行(默认)
+          wrap:换行
+          wrap-reverse:不仅换行还反向排列
+        4)flex-flow:该属性是flex-direction和flex-wrap属性的简写方式
+        5)justify-content:flex-start flex-end flex-center space-between space-around
+          该属性是决定子项的对齐方式
+          flex-start:子项在x轴开始方向对齐
+          flex-end:子项在x轴结尾方向对齐
+          center:子项在x轴居中对齐
+          space-between:子项在x轴两端对齐
+          space-around:子项在x轴等间距对齐
+      子项(flex item)上的属性:
+        1)order:int 该属性接收一个整数值,数值越大,子项靠后
+        2)flex-grow:0(默认) 该属性值为整数,负数无效,该子项占用多少容器内可用空间
+        3)flex-shrink:1(默认) 该属性定义了子项的缩小比例,如果空间不足,该子项将缩小,负值无效
+        4)flex-basis:auto(默认) 指定子项宽高
+        5)flex:flex-grow|flex-shrink|flex-basis的简写方式,默认值flex:0 1 auto;
+          建议使用flex属性,auto不写=0.5em
+        6)align-self:auto|flex-start|flex-end|center|baseline|stretch
+          该属性允许单个子项与其它子项有不同的对齐方式,默认auto
+        7)在flexbox布局中,float,clear,vertical-align属性对子项无效
+作业:让一个元素在其父元素中水平垂直居中对齐
