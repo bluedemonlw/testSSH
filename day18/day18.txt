@@ -1,4 +1,4 @@
-cookie
+cookie机制
   设置cookie
     服务器设置cookie,浏览器保存cookie
     当浏览器再次访问该服务器时,请求会自动带着cookie访问

@@ -1,15 +1,15 @@
-1,Express框架
-    1，模板功能
+1.Express框架
+    1.模板功能
        01_template.js
        01_template.ejs
 
-    2,静态文件伺服能力
+    2.静态文件伺服能力
        nodejs没有根目录，请求获取资源会导致路径出错，无法正确获取资源
        静态文件伺服能力，实际上就是express指定一个文件夹，让请求将其当成根目录
        02_static.js
        02_static.ejs
 
-    3,路由功能
+    3.路由功能
        03_route_1.js
         中间键：get use post
        get 和 use

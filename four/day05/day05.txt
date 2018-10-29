@@ -11,6 +11,7 @@ localStorage的API:
  删除值:localStorage.removeItem(key,value);
  获取指定的key:localStorage.key(下标);
  删除全部:localStorage.clear();
+ 例子:storageAPI.html
 sessionStorage特点:
   保存的数据用于浏览器的一次会话,数据被清除,API和LocalStorage是一样的,使用方式也一样
   可以有效的对表单信息进行维护,比如:刷新表单,数据不丢失
@@ -28,6 +29,7 @@ web移动端
       touchmove:滑动
       touchend:触摸结束
       touchCancel:被迫结束滑动
+    例子:touch.html
     移动端布局flex
     w3c官方称为css弹性盒子布局(flexbox),是在css3中定义的一个新的布局模式
     1.flexbox可以控制在容器内的子元素的排列方式、对齐方法、排序顺序,即使

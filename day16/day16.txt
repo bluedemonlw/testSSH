@@ -16,7 +16,7 @@
     href="/update?time=<%= msg.time %>"
     获取参数time值,通过查询数据库得到该时间对应的留言信息跳转到修改页面
       input[readonly hide] 留言的时间(后面修改数据的条件)
-      xxx
+      用户名
       留言区域
       提交按钮
       点击提交

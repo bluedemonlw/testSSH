@@ -1,4 +1,4 @@
-JS高级  - ECMAScript + DOM + BOM
+JS高级 - ECMAScript + DOM + BOM
 回顾内容:
   1.基本数据类型
     number string boolean null undefined
@@ -12,14 +12,13 @@ JS高级  - ECMAScript + DOM + BOM
     1)定义一个构造函数
         function Student(sname){
           this.sname=sname;
-          ...
           Student.prototype.getName=f(){
             console.log(this.sname);
           }
         }
     2)公共方法定义在原型上
     3)new 构造函数
-      var xm=new Student('小茗');
+      var xm=new Student('自定义的用户名');
       new要做:
       1.实例化一个空对象
       2.构造函数的prototype属性指向原型对象,this指向对象名xm

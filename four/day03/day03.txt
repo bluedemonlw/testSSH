@@ -1,6 +1,7 @@
 template模板引擎
 正则:
   \S:匹配所有非空格字符
+  例子:03_template.html
 ArtTemplate:腾讯公司的
   模板引擎的用法大同小异
   用法:
@@ -11,3 +12,4 @@ ArtTemplate:腾讯公司的
       var Data=template('模板的id',data);
     4)设置HTML页面
       document.body.innerHTML=Data;
+    例子:04_template.html

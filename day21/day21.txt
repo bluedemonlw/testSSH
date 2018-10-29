@@ -1,1 +1,1 @@
-使用nodejs发送请求
+使用nodejs发送请求(需要用到request模块)
