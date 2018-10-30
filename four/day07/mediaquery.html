@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{
+      font-family: 'Microsoft yahei';
+      margin: 0;
+      padding: 0;
+    }
+    @media screen and (min-width:900px){
+      .d1{
+        border: 1px solid #ddd;
+        background: #ddd;
+        color: #28a;
+      }
+    }
+    @media screen and (max-width:899px) and (min-width:600px){
+      .d1{
+        border: 2px solid #a33;
+        background: #fdd;
+        color: #822;
+        padding: 4px;
+      }
+    }
+    @media screen and (max-width:599px){
+      .d1{
+        border: none;
+        background: #faa;
+        color: aquamarine;
+        padding: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>CSS3 media query</h1>
+  <div class="d1">
+     <!-- 假文:lorem+tab -->
+     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis impedit dicta veniam consectetur at, beatae, aliquid quaerat provident iste neque laborum nam voluptatum ad nulla, nostrum necessitatibus officia! Ipsa, eligendi!
+  </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+响应式页面(BootStrap)
+1.什么是响应式页面?
+  可在各种不同分辨率和尺寸的设备下浏览的页面,并且都有不错的浏览体验
+2.如何编写响应式页面?
+  (1)设置meta标签,viewport(视口)
+  (2)避免绝对单位(px),使用相对单位(%,em,auto,rem)
+  (3)使用流式布局(float)
+  (4)图片大小自适应:img{max-width:100%;mix-width:10%;}
+  (5)媒体查询-CSS3 media query技术
+3.media query
+  根据浏览器屏幕的特征,有选择的执行css样式
+  media:媒体:浏览页面的设备(pad,phone,pc,tv,屏幕阅读器...)
+  query:查询:查询当前浏览设备的特性(宽度,高度,分辨率,类型...),根据这些特性执行不同的css
+  用法:
+    @media screen and (max-width:像素值)and (min-width:像素值){}
+    @media screen and (min-width:像素值){}
+Twitter-BootStrap
+1、是一个css样式框架,适用于制作移动设备优先的响应式页面。
+2、使用Boot提供的模板-Bootcss.com
+3、Boot主要涉及的内容?
+  1)html:为h5已有的标签,扩展了一些自定义属性。
+  2)css:css reset+上千个class
+  3)js:包含了十几个自定义的jQuery插件
+全局css样式之栅格系统Grid Layout
+1.所有行和列必须放在容器中([固定宽度].container|.container-fluid[auto(100%宽度)])
+2.容器分为多行,一行最多12列
+3.网页内容只能放在column中
+4.列中可以再嵌套行
+5.列分为四类:col-lg/col-md/col-sm/col-xs
+6.col-md-值 值的范围:1-12 col-md-6(占满一行)
+7.可以为一个列指定不同屏幕下的不同宽度container容器宽度
+    >1200px(超大pc)lg 容器宽度1170px;
+    1200~992px md 容宽970px;
+    992~768px sm 容宽750px;
+    <768px xs 容宽auto;
+8.隐藏列
+    hidden-lg
+    hidden-md
+    hidden-sm
+    hidden-xs
+9.偏移列
+    col-md-offset-偏移值 当前偏移的列数为1~12之间
+    输入框 form-control
+Bootlint工具
+  它是一个检测工具,Boot官方提供的,用于检测Boot页面的HTML,css错误(默认情况下检测不出来)
+组件-图标字体
+  1.图标字体:boot提供了glyphicons图标字体供我们使用。250+;
+  2.图标字体本质不是图片,是字体(web字体),凡是可以用字体的地方都可以用图标。
+  3.glyphicons图标字体只能用于空元素(不包含子元素div,span或者内容的)。
+    <span class="glyphicon"></span>
+  下拉菜单
+    html结构:
+    相对定位的父元素
+    <div>
+      <a class="btn" data-toggle="dropdown">触发按钮</a>
+      <ul>绝对定位
+        <li></li>
+      </ul>
+    </div>
