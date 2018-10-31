@@ -1,0 +1,74 @@
+/*less基础语法*/
+// 1.变量定义@+变量名:值;
+// 全局变量base
+@base:#898989;
+div{
+  color: @base;
+}
+// 变量计算
+@gray:#999;
+@width:100px;
+div{
+  background: #333 - @gray;
+  width: @width * 2;
+}
+// 2.变量的混合(mixin)样式组合
+.arc{
+  background: #333;
+  border-radius: 50%;
+}
+div{
+  width: 200px;
+  height: 200px;
+  .arc;
+  .round;
+}
+div{
+  width: 300px;
+  height: 300px;
+  .arc;
+  .round(2px);
+}
+// 定义了一个公共样式
+.round(@border:1px){
+  border: @border solid #ddd;
+}
+// 3.嵌套规则
+// 标签层级结构清晰可见,减少代码量
+div{
+  font-size: 20px;
+  position: relative;
+  p{
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+  }
+  a{
+    text-decoration: none;
+    color: red;
+    &:hover{
+      color: blue;
+    }
+  }
+}
+// less的作用域
+// 全局变量和局部变量的作用域
+@con:red;
+.page{
+  @con:black;
+  .main{
+    color: @con;
+  }
+}
+.header{
+  background: @con;
+}
+// 在less中使用css3的media query
+div{
+  @media (max-width:400px){
+    background: lightblue;
+  }
+}
+// @import指令--实现css模块化
+// 在less中允许我们引入外部文件,使用@import指令
+// commonjs规范的应用:node.js
