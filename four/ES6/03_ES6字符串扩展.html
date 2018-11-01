@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // ES6字符串的扩展
+    // 支持换行,不需要使用+
+    const str='老友';
+    const msg=`我是你们的${str}`;
+    console.log(msg);
+    // 字符串的API
+    // str.includes()用来查找字符 可以代替indexOf()
+    // 返回值:true|false
+    const w='world';
+    const str1='can';
+    let bool=str1.includes(w);
+    console.log(bool);//false
+    // str.repeat()重复指定的字符
+    let rep=w.repeat(3);
+    console.log(rep);//worldworldworld
+  </script>
+</body>
+</html>

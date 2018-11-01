@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*1.数组的解构赋值*/
+    /*let a=1;
+    let b=2;
+    let c=3;*/
+    // 把这三个变量存入数组中
+    let [a1,b1,c1]=[2,1,3];
+    console.log(a1,b1,c1);
+    // 解构要按照一定的顺序
+    let[a2,[b2,c2],d2]=[1,[2,3],4];
+    console.log(a2,b2,c2,d2);
+    // 两边顺序不一致,导致解构没有值,那么变量的值可能是undefined或者报错
+    let [boo] = [];//undefined
+    console.log(boo);
+    // 以下会报错
+    /*let [foo] = 1;
+      let[foo]=null;
+      let[foo]=NaN;
+      let[foo]=undefined;
+      let[foo]={};*/
+      // 解构赋值可以设置默认值
+      // 有值就不用默认值
+      // let[a3='x']=[];//x
+      // let[a3=true]=[];//true
+      // let[a3=true]=[false];//false
+      // let[a4,b4='开发']=['前端'];//前端开发
+      let[a4,b4='开发']=['前端',undefined];//前端开发
+      console.log(a4+b4);
+      /*对象解构*/
+      // 1.对象的解构和数组有点不同,数组有索引下标有序的,对象是无序的,索引解构时,变量名要和属性名同名
+      let {foo1,boo1}={foo1:'我们',bao:'aaa'};
+      console.log(foo1);//我们
+      console.log(foo1,boo1);//我们 undefined
+      // 对象的嵌套解构
+      let obj={
+        data:[
+          'he',
+          {yes:'world'}
+        ]
+      };
+      let{data:[h,y]}=obj;
+      console.log(h,y);
+      let obj2=
+        {
+          Mdata:[{title:'1'},{title:'2'},{title:'3'}],
+          map:'source-map',
+          code:0
+        };
+      let {Mdata}=obj2;
+      console.log(Mdata);
+      // 如果解构之前就定义了该变量,这时候直接解构会报错,必须用圆括号
+      let temp;
+      ({temp}={temp:'小茗'});
+      console.log(temp);//小茗
+      /*字符串的解构*/
+      let [a5,b5,c5]='ES6';
+      console.log(a5,b5,c5);//E S 6
+      /*函数参数的解构赋值*/
+      let arr3=['Hello','World'];
+      function fun([a,b]){
+        console.log(a+b);
+      }
+      fun(arr3);//HelloWorld
+      function fun1({a=0,b=0}){
+        console.log(a+b);
+      }
+      fun1({a:3,b:5});//8
+      fun1({a:3});//3
+      fun1({});//0
+      // fun1();//报错 没参数undefined
+      /*解构赋值的用途*/
+      // 1.交换变量的值
+      let x1=10;
+      let y1=20;
+      [x1,y1]=[20,x1];
+      console.log(x1,y1);//20 10
+      // 2.函数内部返回多个值(交换位置值不变)
+      function fun2(){
+        return {
+          x2:1,
+          y2:2
+        }
+      }
+      let {x2,y2}= fun2();
+      console.log(x2,y2);//1 2
+  </script>
+</body>
+</html>

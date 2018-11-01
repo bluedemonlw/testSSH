@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 变量直接赋值给对象
+    let sname='javascript';
+    let skill='ES6';
+    const obj={
+      sname,
+      skill
+    };
+    console.log(obj);
+    // 对象的API
+    // Object.is(obj1,obj2)比较两个对象是否相等
+    NaN===NaN;//false NaN是一个范围
+    Object.is({},{});//false
+    Object.is('foo','foo');//true
+    Object.is(NaN,NaN);//true
+    // Object.assign(obj,obj1,obj2,...)用来合并两个或多个对象的
+    // 此方法的第一个参数是目标对象,后面的参数是源对象
+    const obj1={
+      a:'如懿传'
+    };
+    const obj2={
+      b:'延禧攻略'
+    };
+    const obj3={
+      c:'甄嬛传'
+    };
+    // 合并对象
+    const newObj=Object.assign({},obj1,obj2,obj3);
+    console.log(newObj,obj1,obj2,obj3);
+  </script>
+</body>
+</html>
