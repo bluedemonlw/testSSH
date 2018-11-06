@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src='./vue.js'></script>
+</head>
+
+<body>
+  <div id='app'>
+    <p>今日温度:{{setTemp}}</p>
+    <p>穿衣建议:{{advice}}</p>
+    <p>
+      <button @click='add'>增加温度</button>
+      <button @click='reduce'>减少温度</button>
+    </p>
+  </div>
+  <script>
+    /*监听温度的变化
+      要求:当温度大于27℃,我们给出建议穿短袖
+          当温度小于10℃,建议穿毛衣
+          当温度介于两者之间,建议穿长袖
+    */
+    new Vue({
+      el: '#app',
+      data: {
+        temperature:14,
+        advice:'长袖'
+      },
+      computed:{
+        setTemp(){
+          return this.temperature+"℃";
+        }
+      },
+      methods:{
+        add(){//增加温度
+          return this.temperature+=2;
+        },
+        reduce(){//减少温度
+          return this.temperature-=2;
+        }
+      },
+      watch:{//对象,可以有多个监听方法
+        temperature(newVal,oldVal){//把监听的变量当成方法名
+          if(newVal>=27){
+            this.advice='短袖';
+          }else if(newVal<=10){
+            this.advice='毛衣';
+          }else{
+            this.advice='长袖';
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

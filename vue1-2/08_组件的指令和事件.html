@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src='./vue.js'></script>
+</head>
+
+<body>
+  <div id='app'></div>
+  <script>
+    // 局部注册组件
+    new Vue({
+      el: '#app',
+      data: {},
+      template:`<div>
+        <my-comp></my-comp>
+      </div>`,
+      components:{
+        'myComp':{
+          data(){
+            return{
+              msg:'my-comp组件',
+              bgColor:{
+                background:'lightblue',
+                color:'#333'
+              }
+            }
+          },
+          methods:{
+            login(){
+              alert('aaa');
+            }
+          },
+          template:`<div>
+            <p :style='bgColor'>
+              这是局部注册的组件{{msg}}
+              <a href='#' @click='login'>登录</a>
+              <a href='#'>注册</a>
+            </p>
+          </div>`
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
