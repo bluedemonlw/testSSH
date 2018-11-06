@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p v-if='islogin'>{{success}}</p>
+    <p v-else>{{fail}}</p>
+    <button @click='toggle'>点击按钮</button>
+    <p v-show='isshow'>{{success}}</p>
+  </div>
+  <div id="app1">
+    <p v-if='type=="A"'>A</p>
+    <p v-else-if='type=="B"'>B</p>
+    <p v-else>C</p>
+    <button @click='choose'>点击按钮</button>
+  </div>
+  <script>
+    /*条件渲染*/
+    // 1.v-if v-else/v-show
+    new Vue({
+      el:'#app',
+      data:{
+        success:'login success!',
+        fail:'login fail!',
+        islogin:false,
+        isshow:true
+      },
+      methods:{
+        toggle(){
+          this.islogin=!this.islogin;
+          this.isshow=!this.isshow;
+        }
+      }
+    });
+  </script>
+  <script>
+    // 练习
+    // 希望点击按钮能在A/B/C之间切换
+    new Vue({
+      el:'#app1',
+      data:{
+        type:'A'
+      },
+      methods:{
+        choose(){
+          if(this.type=this.type=='A'){
+            this.type='B';
+          }else if(this.type=this.type=='B'){
+            this.type='A';
+          }else{
+            this.type='C';
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

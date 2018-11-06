@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+  <style>
+   .p1{
+     border: 1px solid blue;
+     padding: 20px;
+   }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <button @click='clickEvent'>点击按钮</button>
+    <p @click.self='subclick' class="p1">
+      <button @click.stop='add'>加分</button>
+      <button @click='reduce'>减分</button>
+    </p>
+    <p>
+      本局游戏得分:{{score}}
+    </p>
+  </div>
+  <script>
+    /*2.vue的v-on指令*/
+    new Vue({
+      el:'#app',
+      data:{
+        msg:'aaa',
+        score:0
+      },
+      methods:{//专门用来存放方法
+        clickEvent(){
+          alert(this.msg);
+        },
+        add(){//加分方法
+          this.score++;
+        },
+        reduce(){//减分方法
+          console.log('aaa');
+          this.score--;
+        },
+        subclick(){
+          this.score+=10;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

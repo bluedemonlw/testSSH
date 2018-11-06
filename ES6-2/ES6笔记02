@@ -1,0 +1,79 @@
+- ES6 02 
+1、ES6中的函数的扩展 
+ 1. ES6中函数的参数可以有默认值
+ 2. ES6中创建函数的快捷写法 => 箭头函数
+  (1) 不需要 function 关键字来声明函数
+  (2) 只有一句返回语句时，可以省略 return
+  (3) 箭头函数内部没有自己的this, 继承来自外层的作用域
+  (4) 箭头函数不能new,没有自己的原型，也没有arguments对象
+
+2、Promise 对象 
+  1. Promise 为异步编程提供了同一的解决方案。
+  2. Promise 对象有三种状态，等待(pending),已完成(resolved),已拒绝(rejected).
+  3. Promise的这三种状态关系：只能从pending到resolved或从pending到rejected,不能逆向转化，同时resolved和rejected也不能相互转化。
+  4. 初始化 Promise 对象 
+    const p = new Promise((resolve,reject)=>{});
+    resolve: 在异步操作成功后调用(承诺)，并可传递参数
+    reject : 在异步操作失败后调用，并可将错误结果传递出去
+
+  5. then()
+    (1) promise 实例生成后，可以使用then方法来获取resolve和reject的回调结果   
+    const p = new Promise((resolve,reject)=>{
+      // .... 
+      resolve(data);
+      reject(err);
+    });
+    p.then(fun1,fun2); fun1 => resolve; fun2 = reject
+    => p.then((data)=>{
+           // data就是成功回调的结果
+       },(err)=>{
+           // err 失败的错误信息
+       })
+
+  5. catch() 
+     用于指定发生错误时的回调函数.
+     P.catch((err)=>{   捕获的就是 reject 回调
+       // ... 
+     }) 
+
+8、class 类的使用 
+  1. ES6中加入类的概念，新的class写法让对象原型的写法更加清晰，更像面向对象编程的语法，代码量也减少了。
+  2. class 类中定义了构造方法的使用 constructor
+    class Student {
+      constructor(name,age){ // 构造方法
+        this.name = name;
+        this.age = age;
+      }
+      fun(){
+        .....
+      }
+    }
+    let xm = new Student(xxx,xxx); 
+
+
+9、 JavaScript 语法的编译器 - Babel 
+   JS语法编译器 Babel 可以把ES6编译成ES5或浏览器可识别的JS语法。
+   使用 https://ruanyf.github.io/es-checker 来检测浏览器对ES6的支持情况           
+   1. npm init -y 初始化我们的项目
+   2. cnpm install babel-cli babel-preset-env --save-dev  
+   3. cnpm i babel-cli -g 全局安装
+   babel-preset-env:
+     preset: 该字段设置转码规则， ES2015,ES2016,env... 
+     env: 根据浏览器环境自动选择合适的插件的规则
+   4. 在根目录下新建 .babelrc(配置babel) 文件并且添加
+      {
+       "presets": ["env"]
+      }
+   5. 我们新建一个 test01 文件，在新建一个index.js其中编写一些ES6语法的代码。
+      命令行输入 babel test01 -d test02 
+                babel test01/index.js -o test02/01.js    
+
+10、ES6的模块化 (Module) 
+  1. ES6之前，JS是没有模块化体系的
+  2. 之前常用的两种模块化加载方案(commonJS,AMD),前者用于服务器端(node.js), 后者用于浏览器客户端(require.js).
+     现在ES6在语法层面实现了模块化，我们可以代替前面两种。
+  ES6的模块化功能主要有两个命令构成：import | export
+  在ES6中把一个JS文件就看成是一个模块 
+  (1) import ：负责模块引入，引入其他模块对外的接口
+  (2) export : 负责模块的输出，规定对外的接口 
+               
