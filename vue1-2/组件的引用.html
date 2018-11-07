@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src='./vue.js'></script>
+</head>
+
+<body>
+  <div id='app'>
+    <!-- 组件的引用id定义在组件上 -->
+    <my-comp ref="myComp"></my-comp>
+  </div>
+  <script>
+    /*组件的引用ref*/
+    Vue.component('my-comp',{
+      data(){
+        return{
+          msg:'aa'
+        }
+      },
+      template:`
+        <div style='color:red'>模板</div>
+      `,
+      methods: {
+        add(){
+          console.log('bbb');
+        }
+      }
+    });
+    new Vue({
+      el: '#app',
+      mounted() {
+        // 使用引用id
+        // 获得组件对象
+        console.log(this.$refs.myComp);
+        console.log(this.$refs.myComp.msg);
+        console.log(this.$refs.myComp.add());
+        // 获取DOM元素
+        console.log(this.$refs.myComp.$el);
+      } 
+    });
+  </script>
+</body>
+
+</html>

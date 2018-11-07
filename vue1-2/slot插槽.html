@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src='./vue.js'></script>
+</head>
+
+<body>
+  <div id='app'></div>
+  <script>
+    /*slot组件插槽*/
+    new Vue({
+      el: '#app',
+      data: {},
+      template:`
+        <div>
+          <h2>aaa</h2>
+          <my-comp>
+            <p>ccc</p>
+          </my-comp>
+          <my-comp>
+            <p>ddd</p>
+          </my-comp>
+        </div>
+        `,
+        components:{
+          'my-comp':{
+            template:`
+              <div>
+                <h3>bbb</h3>
+                <slot></slot>
+              </div>
+            `
+          }
+        }
+    });
+  </script>
+</body>
+
+</html>
